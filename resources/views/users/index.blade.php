@@ -12,6 +12,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Assigned Union Council</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -22,6 +23,16 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
+                        <td>
+                            @if($user->role == 'polio_worker')
+                                @php
+                                    $assignment = $user->assignment; // Assuming each user has one assignment
+                                @endphp
+                                {{ $assignment ? $assignment->unionCouncil->name : 'Not Assigned' }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline-block;">

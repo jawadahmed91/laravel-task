@@ -9,6 +9,7 @@ use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\TehsilController;
 use App\Http\Controllers\UnionCouncilController;
+use App\Http\Controllers\RequestDataController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('districts', DistrictController::class);
     Route::resource('tehsils', TehsilController::class);
     Route::resource('union-councils', UnionCouncilController::class);
+
+    Route::get('/get-divisions/{province_id}', [RequestDataController::class, 'getDivisions'])->name('get-divisions');
+    Route::get('/get-districts/{division_id}', [RequestDataController::class, 'getDistricts'])->name('get-districts');
+    Route::get('/get-tehsils/{district_id}', [RequestDataController::class, 'getTehsils'])->name('get-tehsils');
+    Route::get('/get-union-councils/{tehsil_id}', [RequestDataController::class, 'getUnionCouncils'])->name('get-union-councils');
+
 });
 
 Route::middleware(['auth'])->group(function () {

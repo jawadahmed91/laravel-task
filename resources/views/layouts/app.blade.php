@@ -54,5 +54,99 @@
     <div class="container mt-4">
         @yield('content')
     </div>
+    <script>
+        $(document).ready(function() {
+            // When province changes
+            $('#province').on('change', function() {
+                var provinceId = $(this).val();
+                if (provinceId) {
+                    $.ajax({
+                        url: '/get-divisions/' + provinceId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#division').empty().append('<option value="">Select Division</option>');
+                            $.each(data, function(key, value) {
+                                $('#division').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                            $('#division').prop('disabled', false);
+                        }
+                    });
+                } else {
+                    $('#division').empty().append('<option value="">Select Division</option>').prop('disabled', true);
+                    $('#district').empty().append('<option value="">Select District</option>').prop('disabled', true);
+                    $('#tehsil').empty().append('<option value="">Select Tehsil</option>').prop('disabled', true);
+                    $('#union_council').empty().append('<option value="">Select Union Council</option>').prop('disabled', true);
+                }
+            });
+
+            // When division changes
+            $('#division').on('change', function() {
+                var divisionId = $(this).val();
+                if (divisionId) {
+                    $.ajax({
+                        url: '/get-districts/' + divisionId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#district').empty().append('<option value="">Select District</option>');
+                            $.each(data, function(key, value) {
+                                $('#district').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                            $('#district').prop('disabled', false);
+                        }
+                    });
+                } else {
+                    $('#district').empty().append('<option value="">Select District</option>').prop('disabled', true);
+                    $('#tehsil').empty().append('<option value="">Select Tehsil</option>').prop('disabled', true);
+                    $('#union_council').empty().append('<option value="">Select Union Council</option>').prop('disabled', true);
+                }
+            });
+
+            // When district changes
+            $('#district').on('change', function() {
+                var districtId = $(this).val();
+                if (districtId) {
+                    $.ajax({
+                        url: '/get-tehsils/' + districtId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#tehsil').empty().append('<option value="">Select Tehsil</option>');
+                            $.each(data, function(key, value) {
+                                $('#tehsil').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                            $('#tehsil').prop('disabled', false);
+                        }
+                    });
+                } else {
+                    $('#tehsil').empty().append('<option value="">Select Tehsil</option>').prop('disabled', true);
+                    $('#union_council').empty().append('<option value="">Select Union Council</option>').prop('disabled', true);
+                }
+            });
+
+            // When tehsil changes
+            $('#tehsil').on('change', function() {
+                var tehsilId = $(this).val();
+                if (tehsilId) {
+                    $.ajax({
+                        url: '/get-union-councils/' + tehsilId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#union_council').empty().append('<option value="">Select Union Council</option>');
+                            $.each(data, function(key, value) {
+                                $('#union_council').append('<option value="' + value.id + '">' + value.name + '</option>');
+                            });
+                            $('#union_council').prop('disabled', false);
+                        }
+                    });
+                } else {
+                    $('#union_council').empty().append('<option value="">Select Union Council</option>').prop('disabled', true);
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>

@@ -42,6 +42,65 @@
                 @enderror
             </div>
 
+            @if(old('role', $user->role) == 'polio_worker')
+            <div class="form-group">
+                <label for="province">Province</label>
+                <select id="province" name="province" class="form-select">
+                    <option value="">Select Province</option>
+                    @foreach($provinces as $province)
+                        <option value="{{ $province->id }}" {{ old('province', $user->assignment->unionCouncil->tehsil->district->division->province->id ?? '') == $province->id ? 'selected' : '' }}>{{ $province->name }}</option>
+                    @endforeach
+                </select>
+                @error('province')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="division">Division</label>
+                <select id="division" name="division" class="form-select">
+                    <option value="">Select Division</option>
+                    <!-- Options will be populated dynamically via AJAX -->
+                </select>
+                @error('division')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <select id="district" name="district" class="form-select">
+                    <option value="">Select District</option>
+                    <!-- Options will be populated dynamically via AJAX -->
+                </select>
+                @error('district')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="tehsil">Tehsil</label>
+                <select id="tehsil" name="tehsil" class="form-select">
+                    <option value="">Select Tehsil</option>
+                    <!-- Options will be populated dynamically via AJAX -->
+                </select>
+                @error('tehsil')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="union_council">Union Council</label>
+                <select id="union_council" name="union_council" class="form-select">
+                    <option value="">Select Union Council</option>
+                    <!-- Options will be populated dynamically via AJAX -->
+                </select>
+                @error('union_council')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        @endif
+
             <button type="submit" class="btn btn-primary">Update User</button>
             <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>
         </form>

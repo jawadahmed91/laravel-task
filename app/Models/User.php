@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->role === 'polio_worker';
     }
+
+    public function assignment()
+    {
+        return $this->hasOne(Assignment::class, 'polio_worker_id');
+    }
 }
