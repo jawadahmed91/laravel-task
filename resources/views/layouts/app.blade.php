@@ -24,6 +24,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('divisions.index') }}">Divisions</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('districts.index') }}">Districts</a>
+                    </li>
                 </ul>
             </div>
         </div>
