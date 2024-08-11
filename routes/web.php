@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\DivisionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +17,4 @@ use App\Http\Controllers\ProvinceController;
 */
 
 Route::resource('provinces', ProvinceController::class);
+Route::resource('divisions', DivisionController::class);

@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Province extends Model
+class Division extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'province_id'];
 
-    public function divisions()
+    public function province()
     {
-        return $this->hasMany(Division::class);
+        return $this->belongsTo(Province::class);
     }
 }
 
