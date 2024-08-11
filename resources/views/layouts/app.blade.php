@@ -18,6 +18,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                @if (auth()->user()->isAdmin())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('provinces.index') }}">Provinces</a>
                     </li>
@@ -27,7 +31,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('districts.index') }}">Districts</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tehsils.index') }}">Tehsils</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('union-councils.index') }}">Union Councils</a>
+                    </li>
+                    @else
+                        Polio Worker Nav Link here
+                    @endif
                 </ul>
+    
+                <form action="{{ route('logout') }}" method="POST" style="margin-left: 200px;">
+                    Welcome, {{ Auth::user()?->name }}! 
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
             </div>
         </div>
     </nav>

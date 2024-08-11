@@ -15,4 +15,10 @@ class Tehsil extends Model
     {
         return $this->belongsTo(District::class);
     }
+
+
+    public function unionCouncils()
+    {
+        return $this->hasMany(UnionCouncil::class);
+    }
 }
