@@ -87,10 +87,11 @@ The database is seeded with initial data for provinces, divisions, districts, te
 
 ### Users
 
-ID Name Email Role Password
-1 JawadAhmed jawad\_ahmed91@yopmail.com Polio Worker password
-2 Faraz faraz@yopmail.com Polio Worker password
+- Email: jawad\_ahmed91@yopmail.com 
+- Password: password
 
+- Email: faraz@yopmail.com password
+- Password: password
 
 ### Explanation:
 - The **Features** section summarizes the core functionality of the application.
