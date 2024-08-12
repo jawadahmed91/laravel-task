@@ -1,66 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Polio Drive Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This Laravel 10 application is designed to manage the Polio Drive in Pakistan, covering hierarchical administrative units from the provincial level to individual members within households. The system includes user management, role-based access, and the assignment of polio workers to specific union councils.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Hierarchical Administrative Units**: The application manages provinces, divisions, districts, tehsils, and union councils.
+- **Role-Based Access**: Two types of users: Admin and Polio Worker.
+- **Dynamic Form Population**: Cascading dropdowns for selecting provinces, divisions, districts, tehsils, and union councils.
+- **User Management**: Admins can create, edit, and delete users.
+- **Assignment Management**: Admins can assign polio workers to specific union councils.
+- **Dashboard**: Polio workers can view their profile and assigned union council.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/jawadahmed91/laravel-task
+   cd laravel-task
+   
+2.  **Environment setup**:
+    
+    *   cp .env.example .env
+        
+    *   Update .env with your database credentials.
+        
+3.  php artisan key:generate
+    
+4.  php artisan migrate --seed
+    
+5.  php artisan serve
+    
 
-## Learning Laravel
+Usage
+-----
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Authentication
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+*   **Registration**: Admins can register new users, assigning them roles (Admin or Polio Worker).
+    
+*   **Login**: Users can log in to access the system.
+    
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### User Management
 
-## Laravel Sponsors
+*   **Admin Role**:
+    
+    *   View all users.
+        
+    *   Create, edit, and delete users.
+        
+    *   Assign polio workers to union councils.
+        
+*   **Polio Worker Role**:
+    
+    *   View their profile.
+        
+    *   View details of their assigned union council.
+        
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Dashboard
 
-### Premium Partners
+*   **Polio Worker Dashboard**:
+    
+    *   Displays the profile of the logged-in polio worker.
+        
+    *   Shows the assigned union council and related details (tehsil, district, division, province).
+        
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Seeder Data
+-----------
 
-## Contributing
+The database is seeded with initial data for provinces, divisions, districts, tehsils, union councils, and users.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Administrative Units
 
-## Code of Conduct
+*   **Provinces**: Sindh
+    
+*   **Divisions**: Karachi, Hyderabad Sindh
+    
+*   **Districts**: Latifabad, Qasimabad, Old City
+    
+*   **Tehsils**: Latifabad # 10
+    
+*   **Union Councils**: UC-136
+    
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Users
 
-## Security Vulnerabilities
+ID Name Email Role Password
+1 JawadAhmed jawad\_ahmed91@yopmail.com Polio Worker password
+2 Faraz faraz@yopmail.com Polio Worker password
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+### Explanation:
+- The **Features** section summarizes the core functionality of the application.
+- **Installation** and **Usage** sections guide users through setting up and using the application.
+- **Seeder Data** lists the initial data included in the database.
+- **Users** section provides details about the seeded users, including their email and password for testing purposes. 
+- **License** and **Contributing** sections are standard for open-source projects.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This `README.md` file provides all the essential information for setting up, running, and understanding the Polio Drive Management System.

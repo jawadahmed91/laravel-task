@@ -10,6 +10,8 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\TehsilController;
 use App\Http\Controllers\UnionCouncilController;
 use App\Http\Controllers\RequestDataController;
+use App\Http\Controllers\WorkerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
