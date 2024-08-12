@@ -104,3 +104,5 @@ This `README.md` file provides all the essential information for setting up, run
 
 Please create new Database and run this command:
 php artisan migrate:fresh --seed
+
+also Database attach in project
