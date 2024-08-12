@@ -101,3 +101,6 @@ The database is seeded with initial data for provinces, divisions, districts, te
 - **License** and **Contributing** sections are standard for open-source projects.
 
 This `README.md` file provides all the essential information for setting up, running, and understanding the Polio Drive Management System.
+
+Please create new Database and run this command:
+php artisan migrate:fresh --seed
