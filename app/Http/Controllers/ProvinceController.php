@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Province;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProvinceRequest;
+use App\Http\Requests\UpdateProvinceRequest;
 
 class ProvinceController extends Controller
 {
@@ -18,13 +20,9 @@ class ProvinceController extends Controller
         return view('provinces.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreProvinceRequest $request)
     {
-        $request->validate([
-            'name' => 'required|unique:provinces,name',
-        ]);
-
-        Province::create($request->all());
+        Province::create($request->validated());
         return redirect()->route('provinces.index')->with('success', 'Province created successfully.');
     }
 
@@ -38,13 +36,9 @@ class ProvinceController extends Controller
         return view('provinces.edit', compact('province'));
     }
 
-    public function update(Request $request, Province $province)
+    public function update(UpdateProvinceRequest $request, Province $province)
     {
-        $request->validate([
-            'name' => 'required|unique:provinces,name,' . $province->id,
-        ]);
-
-        $province->update($request->all());
+        $province->update($request->validated());
         return redirect()->route('provinces.index')->with('success', 'Province updated successfully.');
     }
 

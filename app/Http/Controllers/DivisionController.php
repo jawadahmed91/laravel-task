@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Division;
 use App\Models\Province;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDivisionRequest;
+use App\Http\Requests\UpdateDivisionRequest;
 
 class DivisionController extends Controller
 {
@@ -19,14 +21,9 @@ class DivisionController extends Controller
         return view('divisions.create', compact('provinces'));
     }
 
-    public function store(Request $request)
+    public function store(StoreDivisionRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'province_id' => 'required|exists:provinces,id',
-        ]);
-
-        Division::create($request->all());
+        Division::create($request->validated());
         return redirect()->route('divisions.index')->with('success', 'Division created successfully.');
     }
 
@@ -41,14 +38,9 @@ class DivisionController extends Controller
         return view('divisions.edit', compact('division', 'provinces'));
     }
 
-    public function update(Request $request, Division $division)
+    public function update(UpdateDivisionRequest $request, Division $division)
     {
-        $request->validate([
-            'name' => 'required',
-            'province_id' => 'required|exists:provinces,id',
-        ]);
-
-        $division->update($request->all());
+        $division->update($request->validated());
         return redirect()->route('divisions.index')->with('success', 'Division updated successfully.');
     }
 

@@ -9,10 +9,20 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
+            @error('name')
+                <div class="text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="name" class="form-label">Division Name</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $division->name }}" required>
         </div>
         <div class="mb-3">
+            @error('province_id')
+                <div class="text-danger">
+                    {{ $message }}
+                </div>
+            @enderror
             <label for="province_id" class="form-label">Province</label>
             <select class="form-select" id="province_id" name="province_id" required>
                 @foreach($provinces as $province)
